@@ -138,27 +138,12 @@ while (true) {
 	event = +prompt('Выберите номер вопроса, чтобы проверить свой ответ');
 
 	if (!isNaN(event)) {
-		if (event == 1) {
-			if (typeof answers[0] !== "undefined") {
-				alert(answers[0]);
-			} else {
-				alert('Вы не отвечали на него. Вам будет показан последний пройденный вопрос:\n ' + answers[answers.length - 1]);
-			}
-
-		} else if (event == 2) {
-			if (typeof answers[1] !== "undefined") {
-				alert(answers[1]);
-			} else {
-				alert('Вы не отвечали на него. Вам будет показан последний пройденный вопрос:\n ' + answers[answers.length - 1]);
-			}
-
+		if (typeof answers[0] == "undefined") {
+			alert('Вы вообще не играли в игру:(')
+		} else if (typeof answers[event - 1] !== "undefined") {
+			alert(answers[event - 1]);
 		} else {
-			if (typeof answers[2] !== "undefined") {
-				alert(answers[2]);
-			} else {
-				alert('Вы не отвечали на него. Вам будет показан последний пройденный вопрос:\n ' + answers[answers.length - 1]);
-			}
-
+			alert('Вы не отвечали на него. Вам будет показан последний пройденный вопрос:\n ' + answers[answers.length - 1]);
 		}
 		alert('Спасибо за игру');
 		break;
