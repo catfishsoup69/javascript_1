@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0 auto;
 	width: 1280px;
@@ -25,38 +29,62 @@ body {
 	text-align: center;
 }
 
-.basket-block {
-	width: 100%;
-}
-
-.basket__table {
-	width: 100%;
-	text-align: center;
+.basket-wrp {
 	font-size: 18px;
 	line-height: 24px;
 	color: #445161;
 	border: 2px solid #445161;
 	border-radius: 7px;
+	text-align: center;
 }
 
+.basket-block {
+	width: 100%;
+}
+
+.basket__item,
+.basket__sum {
+	width: 100%;
+	display: flex;
+	border-bottom: 1px solid #445161;
+}
 
 .basket__item-th {
 	font-weight: 600;
 }
 
 .basket__item__title {
+	display: block;
 	width: 50%;
-	border: 2px solid #445161;
 }
 
 .basket__item__count {
+	display: block;
 	width: 20%;
-	border: 2px solid #445161;
+	border-left: 2px solid #445161;
 }
 
 .basket__item__price {
+	display: block;
 	width: 30%;
-	border: 2px solid #445161;
+	border-left: 2px solid #445161;
+}
+
+.basket__sum {
+	color: #fff;
+	background-color: #989898;
+	font-weight: 600;
+	justify-content: space-between;
+	border: none;
+}
+
+.basket__sum__title {
+	width: 50%;
+}
+
+.basket__sum__count {
+	width: 30%;
+	border-left: 2px solid #445161;
 }
 
 .goods__card-block {

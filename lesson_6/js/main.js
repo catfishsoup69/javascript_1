@@ -1,3 +1,4 @@
+// каталог
 var goods = [{
 		title: 'Бежевый',
 		img: 'img/beige.jpg',
@@ -16,17 +17,19 @@ var goods = [{
 ]
 
 var basket = [];
-var basketTable = document.querySelector('table.basket__table');
-var basketTr, basketTitle, basketCount, basketPrice, basketTrSum, basketSum, basketSumCount
+var basketBlock = document.querySelector('div.basket-block');
+var basketItem, basketTitle, basketCount, basketPrice, basketSum
 
+//функция расчета суммы корзины
 function countBasketPrice(array) {
 	var sum = 0;
 	for (item of array) {
-		sum += goods[item.id - 1].price * item.count;
+		sum += goods[item.id - 1].price.substr(1) * item.count;
 	}
 	return sum;
 }
 
+//функция добавления товара в корзину
 function addToBasket(e) {
 	var item = {};
 	item.count = 1;
@@ -37,7 +40,8 @@ function addToBasket(e) {
 	for (k = 0; k < basket.length; k++) {
 		if (basket[k].id == n) {
 			++basket[k].count;
-			basketCount.innerHTML = basket[k].count;
+			var itemCount = document.querySelector('#c-' + n);
+			itemCount.innerHTML = basket[k].count;
 			break;
 		}
 	}
@@ -46,34 +50,29 @@ function addToBasket(e) {
 		basket.push(item);
 		basket[k].id = n;
 
-		basketTr = document.createElement('tr');
-		basketTable.appendChild(basketTr);
+		basketItem = document.createElement('div');
+		basketItem.classList.add('basket__item');
+		basketBlock.appendChild(basketItem);
 
-		basketTitle = document.createElement('td');
+		basketTitle = document.createElement('span');
 		basketTitle.classList.add('basket__item__title');
-		basketTr.appendChild(basketTitle).innerHTML = goods[n - 1].title;
+		basketItem.appendChild(basketTitle).innerHTML = goods[n - 1].title;
 
-		basketCount = document.createElement('td');
+		basketCount = document.createElement('span');
 		basketCount.classList.add('basket__item__count');
-		basketTr.appendChild(basketCount).innerHTML = basket[k].count;
+		basketCount.setAttribute('id', 'c-' + n);
+		basketItem.appendChild(basketCount).innerHTML = basket[k].count;
 
-		basketPrice = document.createElement('td');
+		basketPrice = document.createElement('span');
 		basketPrice.classList.add('basket__item__price');
-		basketTr.appendChild(basketPrice).innerHTML = goods[n - 1].price;
+		basketItem.appendChild(basketPrice).innerHTML = goods[n - 1].price;
 	}
-	// basketSum = document.createElement('td');
-	// basketSum.colspan = "2";
-	// basketSum.innerText = 'Сумма';
-	// basketTrSum.appendChild(basketSum);
 
-	// basketPrice = document.createElement('td');
-	// basketPrice.classList.add('basket__item__price');
-	// basketTr.appendChild(basketPrice).innerHTML = goods[n - 1].price;
+	basketSum = document.querySelector('span.basket__sum__count');
+	basketSum.innerHTML = '$' + countBasketPrice(basket);
 }
 
-// basketTrSum = document.createElement('tr');
-// basketTable.appendChild(basketTrSum);
-
+// добавление товаров из каталога на сайт
 var cardBlock = document.querySelector('div.goods__card-block');
 var card, cardTitle, cardImg, cardPrice, cardBtn;
 
