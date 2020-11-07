@@ -1,17 +1,17 @@
 // каталог
 var goods = [{
 		title: 'Бежевый',
-		img: 'img/beige.jpg',
+		img: 'img/small/beige.jpg',
 		price: '$11',
 	},
 	{
 		title: 'Белый',
-		img: 'img/white.jpg',
+		img: 'img/small/white.jpg',
 		price: '$8',
 	},
 	{
 		title: 'Оранжевый',
-		img: 'img/orange.jpg',
+		img: 'img/small/orange.jpg',
 		price: '$9',
 	}
 ]
@@ -72,6 +72,29 @@ function addToBasket(e) {
 	basketSum.innerHTML = '$' + countBasketPrice(basket);
 }
 
+// галерея
+var gallery = document.querySelector('section.gallery');
+var closeGalleryBtn = document.querySelector('div.gallery-close');
+closeGalleryBtn.onclick = closeGallery;
+var galleryImg;
+
+
+function openGallery(e) {
+	gallery.style.display = "block";
+
+	var j = e.target.id.substr(4);
+	galleryImg = document.querySelector('img.gallery__img');
+	galleryImg.src = goods[j - 1].img.replace('small', 'big');
+
+	galleryImg.onerror = function () {
+		alert(this.src + " отсутствует");
+	};
+}
+
+function closeGallery() {
+	gallery.style.display = "none";
+}
+
 // добавление товаров из каталога на сайт
 var cardBlock = document.querySelector('div.goods__card-block');
 var card, cardTitle, cardImg, cardPrice, cardBtn;
@@ -89,6 +112,7 @@ for (var i = 0; i < goods.length; i++) {
 	cardImg.classList.add('goods__card__img');
 	cardImg.setAttribute('id', 'img-' + (i + 1));
 	card.appendChild(cardImg).src = goods[i].img;
+	cardImg.onclick = openGallery;
 
 	cardPrice = document.createElement('span');
 	cardPrice.classList.add('goods__card__price');
