@@ -189,7 +189,39 @@ body {
 	cursor: pointer;
 }
 
-.gallery__img {
+.gallery__slider {
+	margin: 0 auto;
 	width: 100%;
+	min-height: 453px;
+	padding: 0 0 40px 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.gallery__slider__arrow {
+	display: block;
+	width: 40px;
+	height: 73px;
+	padding: 180px 0 0 0;
+	color: #445161;
+	cursor: pointer;
+}
+
+.gallery__slider__arrow:hover {
+	color: #d3c1ad;
+}
+
+.gallery__slider__arrow:active {
+	color: #d1d1d1;
+}
+
+.gallery__slider__arrow__icon {
+	fill: currentColor;
+	opacity: 0.5;
+}
+
+.gallery__img {
+	width: 80%;
 	display: block;
 }

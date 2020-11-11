@@ -85,11 +85,63 @@ function openGallery(e) {
 	var j = e.target.id.substr(4);
 	galleryImg = document.querySelector('img.gallery__img');
 	galleryImg.src = goods[j - 1].img.replace('small', 'big');
+	galleryImg.setAttribute('id', ('g_img-' + (j - 1)));
 
 	galleryImg.onerror = function () {
 		alert(this.src + " отсутствует");
 	};
+
+
+	// слайдер в галерее
+	var prev = document.querySelector('#prev'),
+		next = document.querySelector('#next'),
+		l;
+
+	prev.onclick = prevSlide;
+	next.onclick = nextSlide;
+
+	function prevSlide() {
+		l = galleryImg.id.substr(6);
+		--l;
+
+		if (l >= 0) {
+			galleryImg.src = goods[l].img.replace('small', 'big');
+			galleryImg.id = ('g_img-' + (l));
+		} else {
+			galleryImg.src = goods[goods.length - 1].img.replace('small', 'big');
+			galleryImg.id = ('g_img-' + (goods.length - 1));
+		}
+
+		galleryImg.onerror = function () {
+			alert(this.src + " отсутствует");
+			--l;
+			galleryImg.src = goods[l].img.replace('small', 'big');
+			galleryImg.id = ('g_img-' + (l));
+		};
+
+	}
+
+	function nextSlide() {
+		l = galleryImg.id.substr(6);
+		++l;
+		if (l < goods.length) {
+			galleryImg.src = goods[l].img.replace('small', 'big');
+			galleryImg.id = ('g_img-' + (l));
+		} else {
+			galleryImg.src = goods[0].img.replace('small', 'big');
+			galleryImg.id = ('g_img-' + (0));
+		};
+
+		galleryImg.onerror = function () {
+			alert(this.src + " отсутствует");
+			++l;
+			galleryImg.src = goods[l].img.replace('small', 'big');
+			galleryImg.id = ('g_img-' + (l));
+		};
+	}
+
 }
+
 
 function closeGallery() {
 	gallery.style.display = "none";
