@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/main.js"></script>
+	<script src="js/switch.js"></script>
+</head>
+
+<body>
+	<!-- Задание 1 -->
+	<p>Задание 1.</p>
+	<p>var a = 1, b = 1, c, d;<br>
+		c = ++a; alert(c); // 2, <span class="answer">оператор префиксный => мы прибавляем 1 к а до вывода значения
+			с</span><br>
+		d = b++; alert(d); // 1, <span class="answer">оператор постфиксный => сначала мы приравниваем d=b=1, а потом уже
+			увеличиваем b на 1.</span><br>
+		c = (2+ ++a); alert(c); // 5, <span class="answer">оператор префиксный => 2 прибавляем к уже увеличенному на 1
+			значению а, т.е. с=2+3</span><br>
+		d = (2+ b++); alert(d); // 4, <span class="answer">оператор постфиксный => b увеличивается только после вывода
+			d, т.e. d=2+2</span><br>
+		alert(a); // 3, <span class="answer">т.к. мы увеличивали а на 1 во второй и четвертой строках</span><br>
+		alert(b); // 3, <span class="answer">т.к. мы увеличивали b на 1 в третьей и пятой строках</span></p>
+
+	<!-- Задание 2 -->
+	<p>Задание 2.</p>
+	<p>var a = 2;<br>
+		var x = 1 + (a *= 2);<br>
+		<span class="answer">x=5. Сначала умножаем 2*2, затем прибавляем 1.</span>
+	</p>
+
+	<!-- Задание 7 -->
+	<p>Задание 7.</p>
+	<p class="answer">Значение null представляет отсутствие какого-либо объектного значения (тип данных object).<br>
+		0 — бесконечно малое число (тип данных number).<br>
+		alert(null > 0); // false. В случае сравнения типы данных остаются разными, поэтому выражение ложно.<br>
+		alert(null == 0); // false. В данной ситуации null=undefined.<br>
+		alert(null >= 0); // true. В случае такого нестрогого равенства null приводится к числу, равному 0.<br></p>
+</body>
+
+</html>
